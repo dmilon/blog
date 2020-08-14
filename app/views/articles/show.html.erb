@@ -10,5 +10,15 @@
   <%= @article.body %>
 </p>
 
+<% if @article.photos.any? %>
+  <% @article.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, width: 300, height: 150, crop: :fill %>
+  <% end %>
+<% else %>
+  <p>No photo attached</p>
+<% end %>
+
+<br>
+
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
